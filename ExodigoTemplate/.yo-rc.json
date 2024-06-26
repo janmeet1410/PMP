@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.14.0",
+    "libraryName": "exodigo-template",
+    "libraryId": "0d855394-86d0-4e20-a114-1987f13b6520",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "exodigo-template",
+    "solutionShortDescription": "exodigo-template description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

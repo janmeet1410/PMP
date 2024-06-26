@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "exodigo-template-client-side-solution",
+    "id": "0d855394-86d0-4e20-a114-1987f13b6520",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "exodigo-template description"
+      },
+      "longDescription": {
+        "default": "exodigo-template description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "exodigo-template Feature",
+        "description": "The feature that activates elements of the exodigo-template solution.",
+        "id": "4feb3e9d-9148-423c-aead-deb2f372afc9",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/exodigo-template.sppkg"
+  }
+}

@@ -9,10 +9,57 @@
           "manifest": "./src/webparts/homeBanner/HomeBannerWebPart.manifest.json"
         }
       ]
+    },
+    "people-information-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/peopleInformation/PeopleInformationWebPart.js",
+          "manifest": "./src/webparts/peopleInformation/PeopleInformationWebPart.manifest.json"
+        }
+      ]
+    },
+    "contact-cs-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/contactCs/ContactCsWebPart.js",
+          "manifest": "./src/webparts/contactCs/ContactCsWebPart.manifest.json"
+        }
+      ]
+    },
+    "contact-cs-form-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/contactCsForm/ContactCsFormWebPart.js",
+          "manifest": "./src/webparts/contactCsForm/ContactCsFormWebPart.manifest.json"
+        }
+      ]
+    },
+    "project-banner-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/projectBanner/ProjectBannerWebPart.js",
+          "manifest": "./src/webparts/projectBanner/ProjectBannerWebPart.manifest.json"
+        }
+      ]
+    },
+    "contact-info-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/contactInfo/ContactInfoWebPart.js",
+          "manifest": "./src/webparts/contactInfo/ContactInfoWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "HomeBannerWebPartStrings": "lib/webparts/homeBanner/loc/{locale}.js"
+    "HomeBannerWebPartStrings": "lib/webparts/homeBanner/loc/{locale}.js",
+    "PeopleInformationWebPartStrings": "lib/webparts/peopleInformation/loc/{locale}.js",
+    "ContactCsWebPartStrings": "lib/webparts/contactCs/loc/{locale}.js",
+    "ContactCsFormWebPartStrings": "lib/webparts/contactCsForm/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "ProjectBannerWebPartStrings": "lib/webparts/projectBanner/loc/{locale}.js",
+    "ContactInfoWebPartStrings": "lib/webparts/contactInfo/loc/{locale}.js"
   }
 }

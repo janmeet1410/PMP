@@ -1,0 +1,48 @@
+.Contact-wrapper{
+    display: flex;
+}
+.People-card{ display: flex;    margin-left: 30px;    margin-bottom: 30px;}
+.People-card img{    height: 70px;
+    width: 70px;
+    border-radius: 40px;
+    margin-right: 18px;
+}
+.People-card h6{
+    margin: 0 0 0 0;
+    font-size: 18px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+.People-card p{
+    margin: 5px 0;
+    font-size: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;  
+    overflow: hidden
+}
+.PepopleInformation-Title{
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: rgb(14, 44, 66);
+    font-weight: 600;
+}
+
+
+.Add-btn{
+    border-radius: 25px;
+    border: 1px solid black;
+    padding: 5px 15px;
+    font-weight: 600;
+    margin-left: 65px;
+}
+
+.Delete-icon{
+    margin-left: 45px;
+}
+
+.ms-TextField{
+    margin-bottom: 5px;
+}

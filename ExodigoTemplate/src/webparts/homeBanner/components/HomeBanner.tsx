@@ -3,6 +3,11 @@ import styles from './HomeBanner.module.scss';
 import { IHomeBannerProps } from './IHomeBannerProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 
+require("../assets/css/fabric.min.css");
+require("../assets/css/style.css");
+// let ImageLink : string;
+
+
 export default class HomeBanner extends React.Component<IHomeBannerProps, {}> {
   public render(): React.ReactElement<IHomeBannerProps> {
     const {
@@ -12,32 +17,54 @@ export default class HomeBanner extends React.Component<IHomeBannerProps, {}> {
       hasTeamsContext,
       userDisplayName
     } = this.props;
+    
+    const ImageLink : string = this.props.BannerFilePicker == undefined ? require("../assets/Images/Picture1.jpg") :  document.location.origin + this.props.BannerFilePicker;
+    const AccountImageLink : string = this.props.AccountImageFilePicker == undefined ? require("../assets/Images/Picture1.jpg") :  document.location.origin + this.props.AccountImageFilePicker;
+
+    // const AccountImageLink = this.props.AccountImageFilePicker == undefined ? require("../assets/Images/Picture1.jpg") : this.props.AccountImageFilePicker.fileAbsoluteUrl;
+    const test: string = ImageLink.replace(/ /g, "%20");
+    const EncodeAccountImageLink: string = AccountImageLink.replace(/ /g, "%20");
+    
 
     return (
-      <section className={`${styles.homeBanner} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-          <h2>Well done, {escape(userDisplayName)}!</h2>
-          <div>{environmentMessage}</div>
-          <div>Web part property value: <strong>{escape(description)}</strong></div>
+      <div style={{display :"grid"}}>
+        {/* <div className='Home-banner' style={{ backgroundImage: require('../assets/Images/wave1.svg') }}> */}
+        <img className='Home-banner-bg' src={test}  />
+        <div className='Home-banner' 
+        // style={{ backgroundImage: "url("+ test +")" }}
+        >
+          <div style={{ backgroundColor:  this.props.BackgrounOverlay ? this.props.BackgrounOverlay : "rgb(14 44 66 / 25%)", height:'360px'}}>
+            <div className='Home-banner-container Home-banner-wrapper'>
+              {this.props.AccountImage == true ?
+               <div className='ms-Grid-row'>
+               <div className="ms-Grid-col ms-sm6 ms-md12">
+                 <h1 className='Home-banner-title' style={{ fontSize : this.props.TitleFontSize ? this.props.TitleFontSize + "px" : "35px", color : this.props.TitleFontcolor ? this.props.TitleFontcolor  : "#ffffff", textAlign : this.props.TitleFontAlignment ? this.props.TitleFontAlignment  : "left"  }}>{this.props.title ? this.props.title : "Page Title"}</h1>
+                 <p className='Home-banner-description' style={{ fontSize : this.props.DescriptionFontSize ? this.props.DescriptionFontSize + "px" : "17px", color : this.props.DescriptionFontcolor ? this.props.DescriptionFontcolor  : "#ffffff", textAlign : this.props.DescriptionFontAlignment ? this.props.DescriptionFontAlignment  : "left",marginTop:  this.props.TitleDescSpacing ? this.props.TitleDescSpacing + "px"   : "15px"   }}>{this.props.description ? this.props.description : "Page Description"}</p>
+               </div>
+             </div> 
+              : 
+              <div className='ms-Grid-row'>
+                <div className="ms-Grid-col ms-sm6 ms-md6">
+                  <h1 className='Home-banner-title' style={{ fontSize : this.props.TitleFontSize ? this.props.TitleFontSize + "px" : "35px", color : this.props.TitleFontcolor ? this.props.TitleFontcolor  : "#ffffff", textAlign : this.props.TitleFontAlignment ? this.props.TitleFontAlignment  : "left"  }}>{this.props.title ? this.props.title : "Page Title"}</h1>
+                  <p className='Home-banner-description' style={{ fontSize : this.props.DescriptionFontSize ? this.props.DescriptionFontSize + "px" : "17px", color : this.props.DescriptionFontcolor ? this.props.DescriptionFontcolor  : "#ffffff", textAlign : this.props.DescriptionFontAlignment ? this.props.DescriptionFontAlignment  : "left", marginTop:  this.props.TitleDescSpacing ? this.props.TitleDescSpacing + "px"   : "15px"   }}>{this.props.description ? this.props.description : "Page Description"}</p>
+                </div>
+                <div className="ms-Grid-col ms-sm6 ms-md6">
+                  {/* {
+                    this.props.AccountImage == true ? <> <img className='AccountImage' src={EncodeAccountImageLink} alt="" /> </> : ""
+                  } */}
+                  <img className='AccountImage' src={EncodeAccountImageLink} alt="" />
+                </div>
+              </div>
+              }
+              
+            </div>
+          </div>
         </div>
-        <div>
-          <h3>Welcome to SharePoint Framework!</h3>
-          <p>
-            The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It's the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-          </p>
-          <h4>Learn more about SPFx development:</h4>
-          <ul className={styles.links}>
-            <li><a href="https://aka.ms/spfx" target="_blank">SharePoint Framework Overview</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank">Use Microsoft Graph in your solution</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank">Build for Microsoft Teams using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank">Publish SharePoint Framework applications to the marketplace</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank">SharePoint Framework API reference</a></li>
-            <li><a href="https://aka.ms/m365pnp" target="_blank">Microsoft 365 Developer Community</a></li>
-          </ul>
-        </div>
-      </section>
+      </div>
     );
+  } 
+
+  public componentDidMount(): void {
+    this.setState({});
   }
 }

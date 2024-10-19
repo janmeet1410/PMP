@@ -1,0 +1,82 @@
+.Home-banner-bg{
+    height: 360px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.Home-banner{
+    height: 360px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    position: absolute;
+    /* background-image: linear-gradient(
+        rgba(62, 62, 61, 0.8),
+        rgba(62, 62, 61, 0.8)
+    ), */
+    /* url('../Images//GodofWar.jpg'); */
+    /* background-position: center; */
+}
+.Home-banner-container{
+    width: 90%!important;
+    margin: 0 auto;
+}
+.Home-banner-wrapper{
+    padding: 70px 0;
+}
+.Home-banner-title{
+    font-weight: 600;
+    /* font-size: 35px; */
+    line-height: 50px;
+    /* display: flex; */
+    /* align-items: center; */
+    /* color: #ffffff; */
+    margin: 15px 0 0 0;
+}
+.Home-banner-description{
+    font-weight: 500;
+    /* font-size: 17px; */
+    line-height: 32px;
+    /* color: #ffffff; */
+    margin: 15px 0 0 0;
+}
+.Home-banner .AccountImage{
+    width: 95%;
+    max-height: 240px;
+    object-fit: contain;
+}
+/* [data-automation-id="CanvasZone"] div{
+    margin: 0;
+    width: 100%;
+}
+[data-automation-id="CanvasZone"]{
+    margin: 0;
+} */
+[data-automation-id="pageHeader"]{
+    display: none;
+}
+#CommentsWrapper{
+    display: none;
+}
+.nav-links-wrapper a{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    /* color: #7E2A8D; */
+}
+[data-automation-id="CanvasZone"]{
+    display: block!important;
+    margin: 0!important;
+}
+[data-automation-id="CanvasZone"]>div{
+    max-width: 100%!important;
+}
+[data-automation-id="CanvasControl"]{
+    margin: 10px 0!important;
+}
+
+/* ---------------------------Quicklinks fontsize----------------------------- */
+
+#QuicklinksItemTitle{ font-size: 16px !important;}

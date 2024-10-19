@@ -1,0 +1,21 @@
+
+.ContactCSForm{
+    width: 80%;
+    margin: 0 auto;
+}
+.ContactCS-title{
+    /* font-size: 20px; */
+    margin-bottom: 30px;
+    /* color: rgb(14, 44, 66); */
+    font-weight: 600;
+}
+
+.mb-10{
+    margin-bottom: 20px;
+}
+.ms-TextField-fieldGroup{
+    border: none;
+    background-color: #edf5f6;
+    padding: 10px;
+    height: auto;
+}

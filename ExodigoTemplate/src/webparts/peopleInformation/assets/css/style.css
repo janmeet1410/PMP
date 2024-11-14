@@ -1,7 +1,11 @@
 .Contact-wrapper{
     display: flex;
 }
-.People-card{ display: flex;    margin-left: 30px;    margin-bottom: 30px;}
+.People-card{   
+    /* margin-bottom: 20px; */
+    /* border-bottom: 1px solid gray; */
+    padding-bottom: 10px;
+}
 .People-card img{    height: 70px;
     width: 70px;
     border-radius: 40px;
@@ -23,6 +27,12 @@
     -webkit-box-orient: vertical;  
     overflow: hidden
 }
+
+.PepopleInformation{
+    border-radius: 10px;
+    padding: 0 20px;
+    flex-basis: 25%;
+}
 .PepopleInformation-Title{
     font-size: 20px;
     margin-bottom: 25px;
@@ -40,7 +50,7 @@
 }
 
 .Delete-icon{
-    margin-left: 45px;
+    float: right;
 }
 
 .ms-TextField{

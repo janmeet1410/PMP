@@ -30,6 +30,9 @@ export interface IPeopleInformationWebPartProps {
   HideExodigoContacts:boolean;
   HideClientContacts:boolean;
   HideExternalContacts:boolean;
+  HideDesignation:boolean;
+  HideDivider:boolean;
+  HideBorder:boolean;
 }
 
 export default class PeopleInformationWebPart extends BaseClientSideWebPart<IPeopleInformationWebPartProps> {
@@ -68,6 +71,10 @@ export default class PeopleInformationWebPart extends BaseClientSideWebPart<IPeo
         HideExodigoContacts: this.properties.HideExodigoContacts,
         HideClientContacts:this.properties.HideClientContacts,
         HideExternalContacts:this.properties.HideExternalContacts,
+        HideDesignation:this.properties.HideDesignation,
+        HideDivider:this.properties.HideDivider,
+        HideBorder:this.properties.HideBorder 
+
       }
     );
 
@@ -149,8 +156,29 @@ export default class PeopleInformationWebPart extends BaseClientSideWebPart<IPeo
                   offText: "Hide External Contacts",
                   onText: "Show External Contacts",
                 }),
+                PropertyPaneToggle('HideDesignation', {
+                  key: 'HideDesignation',
+                  label: 'Show/Hide Contacts Role',
+                  checked: true,
+                  offText: "Hide Contacts Role",
+                  onText: "Show Contacts Role",
+                }),
+                PropertyPaneToggle('HideDivider', {
+                  key: 'HideDivider',
+                  label: 'Show/Hide Separator',
+                  checked: true,
+                  offText: "Hide Separator ",
+                  onText: "Show Separator ",
+                }),
+                PropertyPaneToggle('HideBorder', {
+                  key: 'HideBorder',
+                  label: 'Show/Hide Border',
+                  checked: true,
+                  offText: "Hide Border",
+                  onText: "Show Border",
+                }),
                 PropertyPaneTextField('ContactSectionPadding', {
-                  label: "Padding for Contact Section"
+                  label: "Padding for Contact Section (Min 10 to Max 100)"
                 }),
                 PropertyPaneTextField('ContactTitleFontSize', {
                   label: "Contact Title FontSize"

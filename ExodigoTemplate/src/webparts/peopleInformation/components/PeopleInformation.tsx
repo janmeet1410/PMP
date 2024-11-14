@@ -101,7 +101,7 @@ export default class PeopleInformation extends React.Component<IPeopleInformatio
     }
 
     await sp.web.lists
-      .getByTitle('Exodigo Contacts')
+      .getByTitle(this.props.ExodigoContactTitle)
       .items.add(data)
       .then((data) => {
         alert("Contact Added Successfully");
@@ -127,7 +127,7 @@ export default class PeopleInformation extends React.Component<IPeopleInformatio
     }
 
     await sp.web.lists
-      .getByTitle('Client Contacts')
+      .getByTitle(this.props.ClientContactTitle)
       .items.add(data)
       .then((data) => {
         alert("Contact Added Successfully");
@@ -152,7 +152,7 @@ export default class PeopleInformation extends React.Component<IPeopleInformatio
     }
 
     await sp.web.lists
-      .getByTitle('Line Manager Contacts')
+      .getByTitle(this.props.ManagerContactTitle)
       .items.add(data)
       .then((data) => {
         alert("Contact Added Successfully");
@@ -170,15 +170,15 @@ export default class PeopleInformation extends React.Component<IPeopleInformatio
   }
 
   public DeletePeopleData(ID) {
-    sp.web.lists.getByTitle("Exodigo Contacts").items.getById(ID).delete().then(_ => this.getPeopleData());
+    sp.web.lists.getByTitle(this.props.ExodigoContactTitle).items.getById(ID).delete().then(_ => this.getPeopleData());
   }
 
   public DeleteClientContactData(ID) {
-    sp.web.lists.getByTitle("Client Contacts").items.getById(ID).delete().then(_ => this.getClientContactData());
+    sp.web.lists.getByTitle(this.props.ClientContactTitle).items.getById(ID).delete().then(_ => this.getClientContactData());
   }
 
   public DeleteExternalContactData(ID) {
-    sp.web.lists.getByTitle("Line Manager Contacts").items.getById(ID).delete().then(_ => this.getExternalContactData());
+    sp.web.lists.getByTitle(this.props.ManagerContactTitle).items.getById(ID).delete().then(_ => this.getExternalContactData());
   }
 
   public render(): React.ReactElement<IPeopleInformationProps> {
@@ -192,14 +192,14 @@ export default class PeopleInformation extends React.Component<IPeopleInformatio
 
     return (
       <>
-        <div className='Contact-wrapper'>
+        <div className='Contact-wrapper' style={{ border: this.props.HideBorder ? '1px solid' : 'none' }}>
 
           {
             this.props.HideExodigoContacts == true ?
               <>
-                <div className='PepopleInformation' style={{ flexBasis: this.props.ContactSectionPadding ? this.props.ContactSectionPadding + "%" : "33%" }}>
+                <div className='PepopleInformation' style={{ marginRight: this.props.ContactSectionPadding ? this.props.ContactSectionPadding + "px" : "10px" }}>
 
-                  <p className='PepopleInformation-Title' style={{ fontSize: this.props.ContactTitleFontSize ? this.props.ContactTitleFontSize + "px" : "20px", color: this.props.ContactTitleFontColor ? this.props.ContactTitleFontColor : "", textAlign: this.props.ContactTitleFontAlignment ? this.props.ContactTitleFontAlignment : "left", display: 'flex' }} >{this.props.ExodigoContactTitle ? this.props.ExodigoContactTitle : "Exodigo Contacts"}<button className='Add-btn' onClick={() => this.setState({ AddDialog1: false })}>Add</button></p>
+                  <p className='PepopleInformation-Title' style={{ fontSize: this.props.ContactTitleFontSize ? this.props.ContactTitleFontSize + "px" : "20px", color: this.props.ContactTitleFontColor ? this.props.ContactTitleFontColor : "", textAlign: this.props.ContactTitleFontAlignment ? this.props.ContactTitleFontAlignment : "left", display: 'flex', justifyContent : 'space-between' }} >{this.props.ExodigoContactTitle ? this.props.ExodigoContactTitle : "Exodigo Contacts"}<button className='Add-btn' onClick={() => this.setState({ AddDialog1: false })}>Add</button></p>
                   <div className='ms-Grid-row'>
                     {
                       this.state.PeopleData.length > 0 && (
@@ -207,7 +207,7 @@ export default class PeopleInformation extends React.Component<IPeopleInformatio
                           let imageURL = item.Image ? JSON.parse(item.Image).serverRelativeUrl : require('../assets/Images/userdefault.jpg');
                           return (
                             <div className="ms-Grid-col ms-sm12 ms-md12">
-                              <div className='People-card'>
+                              <div className='People-card '>
                                 {/* <img src={imageURL} /> */}
                                 <div>
                                   <h6 style={{ fontSize: this.props.ContactPersonNameFontSize ? this.props.ContactPersonNameFontSize + "px" : "18px", color: this.props.ContactPersonNameFontColor ? this.props.ContactPersonNameFontColor : "" }}>{item.Title ? item.Title : ''}<Icon iconName='Cancel' className='Delete-icon' onClick={() => this.DeletePeopleData(item.Id)}></Icon></h6>
@@ -215,7 +215,14 @@ export default class PeopleInformation extends React.Component<IPeopleInformatio
                                   <a href={'mailto:' + item.Email} style={{ color: "inherit" }}>
                                     <p style={{ fontSize: this.props.ContactPersonDetailFontSize ? this.props.ContactPersonDetailFontSize + "px" : "14px", color: this.props.ContactPersonDetailFontColor ? this.props.ContactPersonDetailFontColor : "" }}>{item.Email ? item.Email : ''}</p>
                                   </a>
-                                  <p style={{ fontSize: this.props.ContactPersonDetailFontSize ? this.props.ContactPersonDetailFontSize + "px" : "14px", color: this.props.ContactPersonDetailFontColor ? this.props.ContactPersonDetailFontColor : "" }}>{item.Role ? item.Role : ''}</p>
+                                  {
+                                    this.props.HideDesignation == true ? 
+                                    <>
+                                    <p style={{ fontSize: this.props.ContactPersonDetailFontSize ? this.props.ContactPersonDetailFontSize + "px" : "14px", color: this.props.ContactPersonDetailFontColor ? this.props.ContactPersonDetailFontColor : "" }}>{item.Role ? item.Role : ''}</p>
+                                    </> : <></>
+                                  }
+
+                                 {this.props.HideDivider == true ? <><hr style={{margin:'15px 0'}}/></> : <></>}
                                 </div>
                               </div>
                             </div>
@@ -231,8 +238,8 @@ export default class PeopleInformation extends React.Component<IPeopleInformatio
           {
             this.props.HideClientContacts == true ?
               <>
-                <div className='PepopleInformation' style={{ flexBasis: this.props.ContactSectionPadding ? this.props.ContactSectionPadding + "%" : "33%" }}>
-                  <p className='PepopleInformation-Title' style={{ fontSize: this.props.ContactTitleFontSize ? this.props.ContactTitleFontSize + "px" : "20px", color: this.props.ContactTitleFontColor ? this.props.ContactTitleFontColor : "", textAlign: this.props.ContactTitleFontAlignment ? this.props.ContactTitleFontAlignment : "left", display: 'flex' }} >{this.props.ClientContactTitle ? this.props.ClientContactTitle : "Client Contacts"}<button className='Add-btn' onClick={() => this.setState({ AddDialog2: false })}>Add</button></p>
+                <div className='PepopleInformation' style={{ marginRight: this.props.ContactSectionPadding ? this.props.ContactSectionPadding + "px" : "10px" }}>
+                  <p className='PepopleInformation-Title' style={{ fontSize: this.props.ContactTitleFontSize ? this.props.ContactTitleFontSize + "px" : "20px", color: this.props.ContactTitleFontColor ? this.props.ContactTitleFontColor : "", textAlign: this.props.ContactTitleFontAlignment ? this.props.ContactTitleFontAlignment : "left", display: 'flex', justifyContent : 'space-between' }} >{this.props.ClientContactTitle ? this.props.ClientContactTitle : "Client Contacts"}<button className='Add-btn' onClick={() => this.setState({ AddDialog2: false })}>Add</button></p>
                   <div className='ms-Grid-row'>
                     {
                       this.state.ClientContactData.length > 0 && (
@@ -249,6 +256,7 @@ export default class PeopleInformation extends React.Component<IPeopleInformatio
                                     <p style={{ fontSize: this.props.ContactPersonDetailFontSize ? this.props.ContactPersonDetailFontSize + "px" : "14px", color: this.props.ContactPersonDetailFontColor ? this.props.ContactPersonDetailFontColor : "" }}>{item.Email ? item.Email : ''}</p>
                                   </a>
                                   {/* <p style={{ fontSize : this.props.ContactPersonDetailFontSize ? this.props.ContactPersonDetailFontSize + "px" : "14px", color : this.props.ContactPersonDetailFontColor ? this.props.ContactPersonDetailFontColor  : "" }}>{item.Role ? item.Role : ''}</p> */}
+                                  {this.props.HideDivider == true ? <><hr style={{margin:'15px 0'}}/></> : <></>}                                
                                 </div>
                               </div>
                             </div>
@@ -265,8 +273,8 @@ export default class PeopleInformation extends React.Component<IPeopleInformatio
           {
             this.props.HideExternalContacts == true ?
               <>
-                <div className='PepopleInformation' style={{ flexBasis: this.props.ContactSectionPadding ? this.props.ContactSectionPadding + "%" : "33%" }}>
-                  <p className='PepopleInformation-Title' style={{ fontSize: this.props.ContactTitleFontSize ? this.props.ContactTitleFontSize + "px" : "20px", color: this.props.ContactTitleFontColor ? this.props.ContactTitleFontColor : "", textAlign: this.props.ContactTitleFontAlignment ? this.props.ContactTitleFontAlignment : "left", display: 'flex' }} >{this.props.ManagerContactTitle ? this.props.ManagerContactTitle : "Line Manager Contacts"}<button className='Add-btn' onClick={() => this.setState({ AddDialog3: false })}>Add</button></p>
+                <div className='PepopleInformation' style={{ marginRight: this.props.ContactSectionPadding ? this.props.ContactSectionPadding + "px" : "10px" }}>
+                  <p className='PepopleInformation-Title' style={{ fontSize: this.props.ContactTitleFontSize ? this.props.ContactTitleFontSize + "px" : "20px", color: this.props.ContactTitleFontColor ? this.props.ContactTitleFontColor : "", textAlign: this.props.ContactTitleFontAlignment ? this.props.ContactTitleFontAlignment : "left", display: 'flex', justifyContent : 'space-between' }} >{this.props.ManagerContactTitle ? this.props.ManagerContactTitle : "Line Manager Contacts"}<button className='Add-btn' onClick={() => this.setState({ AddDialog3: false })}>Add</button></p>
                   <div className='ms-Grid-row'>
                     {
                       this.state.ExternalContactData.length > 0 && (
@@ -282,6 +290,7 @@ export default class PeopleInformation extends React.Component<IPeopleInformatio
                                   <a href={'mailto:' + item.Email} style={{ color: "inherit" }}>
                                     <p style={{ fontSize: this.props.ContactPersonDetailFontSize ? this.props.ContactPersonDetailFontSize + "px" : "14px", color: this.props.ContactPersonDetailFontColor ? this.props.ContactPersonDetailFontColor : "" }}>{item.Email ? item.Email : ''}</p>
                                   </a>
+                                 {this.props.HideDivider == true ? <><hr style={{margin:'15px 0'}}/></> : <></>}
                                   {/* <p style={{ fontSize : this.props.ContactPersonDetailFontSize ? this.props.ContactPersonDetailFontSize + "px" : "14px", color : this.props.ContactPersonDetailFontColor ? this.props.ContactPersonDetailFontColor  : "" }}>{item.Role ? item.Role : ''}</p> */}
                                 </div>
                               </div>

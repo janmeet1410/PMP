@@ -19,4 +19,7 @@ export interface IPeopleInformationProps {
   HideExodigoContacts:boolean;
   HideClientContacts:boolean;
   HideExternalContacts:boolean;
+  HideDesignation:boolean;
+  HideDivider:boolean;
+  HideBorder:boolean;
 }
